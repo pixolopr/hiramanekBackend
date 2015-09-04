@@ -15,5 +15,6 @@
  	 { 
  	 	 $message['json']=$this->model->get_all(); 
  	 	 $this->load->view('json', $message); 
- 	 } 
+ 	 }
+ 	
  }

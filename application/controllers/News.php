@@ -16,4 +16,18 @@
  	 	 $message['json']=$this->model->get_all(); 
  	 	 $this->load->view('json', $message); 
  	 } 
+ 	  public function newsofcategoriesbyid()
+ 	 {
+ 	 	
+ 	 	$id= $this->input->get('id');
+ 	 	$message['json']= $this->model->newsofcategoriesbyid($id);
+ 	 	$this->load->view('json',$message);
+
+ 	 }
+ 	 public function fullarticalbynewsid()
+ 	 {
+ 	 	$id=$this->input->get('id');
+ 	 	$message['json']= $this->model->fullarticalbynewsid($id);
+ 	 	$this->load->view('json',$message);
+ 	 }
  }

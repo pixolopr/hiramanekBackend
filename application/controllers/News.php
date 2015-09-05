@@ -16,11 +16,11 @@
  	 	 $message['json']=$this->model->get_all(); 
  	 	 $this->load->view('json', $message); 
  	 } 
- 	  public function newsofcategoriesbyid()
+ 	  public function newsofonecategories()
  	 {
  	 	
- 	 	$id= $this->input->get('id');
- 	 	$message['json']= $this->model->newsofcategoriesbyid($id);
+ 	 	$category= $this->input->get('category');
+ 	 	$message['json']= $this->model->newsofonecategories($category);
  	 	$this->load->view('json',$message);
 
  	 }
@@ -28,6 +28,18 @@
  	 {
  	 	$id=$this->input->get('id');
  	 	$message['json']= $this->model->fullarticalbynewsid($id);
+ 	 	$this->load->view('json',$message);
+ 	 }
+ 	 public function latestnewsfromallcategories()
+ 	 {
+ 	 	$message['json']=$this->model->latestnewsfromallcategories();
+ 	 	$this->load->view('json',$message);	
+ 	 }
+ 	 public function nexttennews()
+ 	 {
+ 	 	$count=$this->input->get('count');
+ 	 	$category=$this->input->get('category');
+ 	 	$message['json']= $this->model->nexttennews($count,$category);
  	 	$this->load->view('json',$message);
  	 }
  }

@@ -6,10 +6,10 @@
  	public $_table = 'categories';
  
  	 //Write functions here 
- 	public function givecategoriesnames()
+ 	public function getcategoriesnames()
  	{
  		
- 		$query= $this->db->query('SELECT `Categories`.`id` AS `Categories_id`, `categories`.`name` AS `Categories_Name`
+ 		$query= $this->db->query('SELECT `Categories`.`id` AS `categories_id`, `categories`.`name` AS `categories_name`
  			FROM `categories`
  			WHERE `categories`.`show`=1')->result();
  		return $query;

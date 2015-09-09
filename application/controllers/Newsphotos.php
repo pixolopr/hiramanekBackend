@@ -16,10 +16,10 @@
  	 	 $message['json']=$this->model->get_all(); 
  	 	 $this->load->view('json', $message); 
  	 }
- 	 public function allimagesofnews()
+ 	 public function getallimagesofnews()
  	 {
  	 	$id= $this->input->get('id');
- 	 	$message['json']= $this->model->allimagesofnews($id);
+ 	 	$message['json']= $this->model->getallimagesofnews($id);
  	 	$this->load->view('json',$message);
 
  	 } 

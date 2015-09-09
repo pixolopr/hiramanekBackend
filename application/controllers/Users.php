@@ -18,6 +18,7 @@
  	 } 
  	 public function login()
  	 {
+ 	 	
  	 	$user=$this->input->get('user');
  	 	$user=json_decode($user);
  	 	$email=$user->email;

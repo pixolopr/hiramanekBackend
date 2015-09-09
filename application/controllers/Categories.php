@@ -16,18 +16,12 @@
  	 	 $message['json']=$this->model->get_all(); 
  	 	 $this->load->view('json', $message); 
  	 }
- 	  public function givecategoriesnames()
+ 	  public function getcategoriesnames()
  	 {
 
  	 	
-		$message['json']=$this->model->givecategoriesnames();
+		$message['json']=$this->model->getcategoriesnames();
  	 	$this->load->view('json',$message);
  	 }  
- 	 public function 15newsofcategoriesbyid()
- 	 {
- 	 	$id=$this->input->get('id');
- 	 	$message['json']=$this->mode1->15newsofcategoriesbyid($id);
- 	 	$this->load->view('json',$message);
-
- 	 }
+ 	  
  }

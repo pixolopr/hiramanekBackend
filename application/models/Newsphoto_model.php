@@ -6,7 +6,7 @@
  	public $_table = 'newsphotos';
  
  		 //Write functions here 
- 	public function allimagesofnews($id)
+ 	public function getallimagesofnews($id)
 	{
 		$query=$this->db->query("SELECT `newsphotos`.`id` AS `photoid`,`newsphotos`.`photo` AS `photo` FROM `newsphotos` 
 			INNER JOIN `news`

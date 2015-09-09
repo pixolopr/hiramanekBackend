@@ -33,10 +33,10 @@
  		{
  			$data="INSERT INTO `users`(`name`,`lastname`,`contact`,`email`,`password`) values('$name','$lastname','$contact','$email','$password')";
  			$query=$this->db->query($data);
- 
+ 			
  			$id = $this->db->insert_id();
 
- 			$query = $this->db->query("SELECT * FROM `users` WHERE `id` = '$id'")->row();
+ 			$query= $this->db->query("SELECT * FROM `users` WHERE `id` = '$id'")->result();
  			return $query;
  		}
  	}

@@ -7,7 +7,7 @@
  	public $_table = 'news';
  
  	 //Write functions here
- 	 public function newsofonecategories($category)
+ 	 public function getnewsofonecategory($category)
  	{   
  		
  		$sql = "SELECT `news`.`id` AS `news_id`, `news`.`shortheadline` AS `shortheadline`, `news`.`photo` AS `photo`
@@ -29,7 +29,7 @@
 
 
    	}
- 	public function fullarticalbynewsid($id)
+ 	public function getfullarticalbynewsid($id)
  	{
  		$value="SELECT `news`.`headline` AS `headLine`, `news`.`article` AS `artical`, `news`.`timestamp` AS `timeStamp`, `author`.`name` AS `authorname`
  		FROM `news`
@@ -48,7 +48,7 @@ $query->count_image = $count->count;
 	return $query;
 
 		}
-	public function latestnewsfromallcategories()
+	public function getlatestnewsfromallcategories()
 	{
 
 
@@ -59,7 +59,7 @@ $query->count_image = $count->count;
 		$firstobj->news = $this->db->query("SELECT `news`.`id` AS `newsid`, `news`.`photo` as `photo`, `news`.`shortheadline` AS `shortheadline`
 		FROM `news`
 		WHERE `top`=1
-		ORDER BY `news`.`timestamp` desc limit 5")->result();		
+		ORDER BY `news`.`timestamp` desc limit 15")->result();		
 
 		$query=$this->db->query("SELECT distinct `categories`.`id` AS `id`,`categories`.`name` AS `category`
 			FROM `categories`
@@ -77,7 +77,7 @@ $query->count_image = $count->count;
 	return $query;
 	} 
 
-	public function nexttennews($count,$category)
+	public function getnexttennews($count,$category)
 	{
 		$nxtcount=$count+10;
 
@@ -98,7 +98,6 @@ $query->count_image = $count->count;
 
 		$query = $this->db->query($sql)->result();
  		
-		
  		return $query;
 	}
 

@@ -9,7 +9,7 @@
  	public function getcategoriesnames()
  	{
  		
- 		$query= $this->db->query('SELECT `Categories`.`id` AS `categories_id`, `categories`.`name` AS `categories_name`
+ 		$query= $this->db->query('SELECT `categories`.`id` AS `id`, `categories`.`name` AS `name`
  			FROM `categories`
  			WHERE `categories`.`show`=1')->result();
  		return $query;

@@ -31,7 +31,7 @@
    	}
  	public function getfullarticalbynewsid($id)
  	{
- 		$value="SELECT `news`.`headline` AS `headLine`, `news`.`article` AS `artical`, `news`.`timestamp` AS `timeStamp`, `author`.`name` AS `authorname`
+ 		$value="SELECT `news`.`headline` AS `headLine`, `news`.`article` AS `artical`, `news`.`timestamp` AS `timeStamp`, `author`.`name` AS `authorname`,`news`.`photo` AS `photo`
  		FROM `news`
  		INNER JOIN `author`
        ON `author`.`id`=`news`.`author`

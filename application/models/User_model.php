@@ -36,8 +36,11 @@
  			
  			$id = $this->db->insert_id();
 
- 			$query= $this->db->query("SELECT * FROM `users` WHERE `id` = '$id'")->result();
+ 			$query= $this->db->query("SELECT * FROM `users` WHERE `id` = '$id'")->row();
+ 			
+ 			//print_r($query);
  			return $query;
+
  		}
  	}
 

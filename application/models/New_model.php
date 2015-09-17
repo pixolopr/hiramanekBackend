@@ -56,8 +56,7 @@ $query->count_image = $count->count;
 
 		$firstobj = new stdClass();
 		$firstobj->category = "Top News";
-		$firstobj->news = $this->db->query("SELECT `news`.`id` AS `newsid`, `news`.`photo` as `photo`, `news`.`shortheadline` AS `shortheadline`,`news`.`language` AS language
-		FROM `news`
+		$firstobj->news = $this->db->query("SELECT `news`.`id` AS `newsid`, `news`.`photo` as `photo`, `news`.`shortheadline` AS `shortheadline`,`news`.`language` AS `language`  FROM `news`
 		WHERE `top`=1
 		ORDER BY `news`.`timestamp` desc limit 15")->result();		
 
@@ -68,7 +67,7 @@ $query->count_image = $count->count;
 
 		foreach ($query as $q)
 			{
-				$q->news = $this->db->query("SELECT `news`.`id` AS `newsid` , `news`.`photo` AS `photo`, `news`.`shortheadline` AS `shortheadline` FROM `news`
+				$q->news = $this->db->query("SELECT `news`.`id` AS `newsid` , `news`.`photo` AS `photo`, `news`.`shortheadline` AS `shortheadline`, `news`.`language` AS `language` FROM `news`
 				WHERE `news`.`category` = '$q->id' order by `news`.`timestamp` desc limit 5 ")->result();
 			};
 

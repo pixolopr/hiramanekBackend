@@ -46,6 +46,27 @@
 
 
 
+ 	public function checkemail($email)
+ 	{
+ 		$check=$this->db->query("SELECT *FROM `users` WHERE `users`.`email`='$email'")->num_rows();
+ 		if($check>0)
+ 		{
+ 			return true;
+
+ 		}
+ 		else
+ 		{
+ 			return false;
+ 		}
+ 	}
+
+ 	public function changepassword($password,$id)
+ 	{
+ 		$change=$this->db->query("UPDATE `users`	SET `users`.`password`='$password' WHERE `users`.`id`='$id'");
+ 		
+
+ 	}
+
  } 
  
  ?>

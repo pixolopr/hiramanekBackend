@@ -10,12 +10,12 @@
  	 public function getnewsofonecategory($category)
  	{   
  		
- 		$sql = "SELECT `news`.`id` AS `news_id`, `news`.`shortheadline` AS `shortheadline`, `news`.`photo` AS `photo`
+ 		$sql = "SELECT `news`.`id` AS `news_id`, `news`.`shortheadline` AS `shortheadline`, `news`.`photo` AS `photo`,`news`.`language` AS language
  			FROM `news`" ;
 
  			if($category == "topnews")
  			{
- 				$sql .= " WHERE `top` = 1";
+ 				$sql .= " WHERE `news`.`top` = 1";
  			}else{
  				$sql .= " where `news`.`category`= '$category' ";
  			};
@@ -31,7 +31,7 @@
    	}
  	public function getfullarticalbynewsid($id)
  	{
- 		$value="SELECT `news`.`id` AS `id`,`news`.`headline` AS `headLine`, `news`.`article` AS `artical`, `news`.`timestamp` AS `timeStamp`, `author`.`name` AS `authorname`,`news`.`photo` AS `photo`
+ 		$value="SELECT `news`.`id` AS `id`,`news`.`headline` AS `headLine`, `news`.`article` AS `artical`, `news`.`timestamp` AS `timeStamp`, `author`.`name` AS `authorname`,`news`.`photo` AS `photo`,`news`.`language` AS `language`
  		FROM `news`
  		INNER JOIN `author`
        ON `author`.`id`=`news`.`author`
@@ -56,7 +56,7 @@ $query->count_image = $count->count;
 
 		$firstobj = new stdClass();
 		$firstobj->category = "Top News";
-		$firstobj->news = $this->db->query("SELECT `news`.`id` AS `newsid`, `news`.`photo` as `photo`, `news`.`shortheadline` AS `shortheadline`
+		$firstobj->news = $this->db->query("SELECT `news`.`id` AS `newsid`, `news`.`photo` as `photo`, `news`.`shortheadline` AS `shortheadline`,`news`.`language` AS language
 		FROM `news`
 		WHERE `top`=1
 		ORDER BY `news`.`timestamp` desc limit 15")->result();		
@@ -82,7 +82,7 @@ $query->count_image = $count->count;
 		$nxtcount=$count+10;
 
 
-		$sql = "SELECT `news`.`id` AS `news_id`, `news`.`shortheadline` AS `shortheadline`, `news`.`photo` AS `photo`
+		$sql = "SELECT `news`.`id` AS `news_id`, `news`.`shortheadline` AS `shortheadline`, `news`.`photo` AS `photo`,`news`.`language` AS `language`
  			FROM `news`" ;
 
  			if($category == "topnews")

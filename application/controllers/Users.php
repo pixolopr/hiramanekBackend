@@ -41,5 +41,19 @@
  	 	$this->load->view('json',$message);
  	}
 
+ 	public function checkemail()
+ 	{
+ 		$email=$this->input->get('email');
+ 		$message['json']= $this->model->checkemail($email);
+ 	 	$this->load->view('json',$message);
 
+ 	}
+ 	public function changepassword()
+ 	{
+ 		$password=$this->input->get('password');
+ 		$id=$this->input->get('id');
+ 		$message['json']= $this->model->changepassword($password,$id);
+ 	 	$this->load->view('json',$message);
+
+ 	}
  }

@@ -63,6 +63,7 @@
  	public function changepassword($password,$id)
  	{
  		$change=$this->db->query("UPDATE `users`	SET `users`.`password`='$password' WHERE `users`.`id`='$id'");
+ 		return true;
  		
 
  	}

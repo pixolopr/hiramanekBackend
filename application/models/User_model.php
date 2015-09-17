@@ -13,7 +13,7 @@
  		if($query->num_rows()==1)
  		{
  			
- 			return $query->result();
+ 			return $query->row();
  		}
  		else
  		{
@@ -62,8 +62,8 @@
 
  	public function changepassword($password,$id)
  	{
- 		$change=$this->db->query("UPDATE `users`	SET `users`.`password`='$password' WHERE `users`.`id`='$id'");
- 		return true;
+ 		$change = $this->db->query("UPDATE `users` SET `password` = '$password' WHERE `id`='$id'");
+ 		return $change;
  		
 
  	}

@@ -40,20 +40,23 @@
  	 	$message['json']= $this->model->signup($name,$lastname,$contact,$email,$password);
  	 	$this->load->view('json',$message);
  	}
-
- 	public function checkemail()
+ 	public function validate()
  	{
- 		$email=$this->input->get('email');
- 		$message['json']= $this->model->checkemail($email);
- 	 	$this->load->view('json',$message);
-
+ 		$email = $this->input->get('emailaddress');
+ 		$check = $this->db->query("SELECT * FROM `users` WHERE `email` = '$email'")->num_rows();
+ 		if($check > 0)
+ 		{
+ 			echo "true";
+ 		}else{
+ 			echo "false";
+ 		};
  	}
- 	public function changepassword()
- 	{
- 		$password=$this->input->get('password');
- 		$id=$this->input->get('id');
- 		$message['json']= $this->model->changepassword($password,$id);
- 	 	$this->load->view('json',$message);
-
+ 	public function changepassword(){
+ 		$id = $this->input->get('id');
+ 		$password = $this->input->get('password');
+ 		$message['json'] = $this->model->changepassword($password,$id);
+ 		$this->load->view('json', $message);
  	}
+
+
  }

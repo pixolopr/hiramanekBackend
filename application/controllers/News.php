@@ -42,4 +42,23 @@
  	 	$message['json']= $this->model->getnexttennews($count,$category);
  	 	$this->load->view('json',$message);
  	 }
+ 	 public function getsearchnews()
+ 	 {
+ 	 	$example=$this->input->get('keyword');
+ 	 	$count=$this->input->get('count');
+ 	 	if($count == '')
+ 	 		{
+ 	 			$count = 0;
+ 	 		};
+ 	 	
+ 	 	$message['json']= $this->model->getsearchnews($example, $count);
+ 	 	$this->load->view('json',$message);
+ 	 } 
+ 	 public function getnexttensearchnews()
+ 	 {
+ 	 	$count=$this->input->get('count');
+ 	 	$example=$this->input->get('keyword');
+ 	 	$message['json']= $this->model->getnexttensearchnews($count,$example);
+ 	 	$this->load->view('json',$message);
+ 	 }
  }

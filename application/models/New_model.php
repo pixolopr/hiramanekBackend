@@ -99,6 +99,59 @@ $query->count_image = $count->count;
  		
  		return $query;
 	}
+	public function getsearchnews($example, $count)
+	{
+		$count2 = $count + 20;
+
+		$sql1="SELECT distinct `news`.`id` AS `id`,`news`.`shortheadline` AS `shortheadline`,`news`.`photo` AS `photo` FROM `news`
+				WHERE `news`.`headline` LIKE '%$example%' order by `news`.`timestamp` limit $count, $count2";
+
+		$numrows=$this->db->query($sql1)->num_rows();
+		$exe = false;
+		if($numrows < 20)
+		{
+			$exe = true;
+		}	
+
+		//$count=20-$count;
+
+		if($numrows == 0)
+			{
+				$numrows=$this->db->query("SELECT distinct `news`.`id` AS `id`,`news`.`shortheadline` AS `shortheadline`,`news`.`photo` AS `photo` FROM `news`
+				WHERE `news`.`headline` LIKE '%$example%'")->num_rows();
+				$numrows2=$this->db->query("SELECT distinct `news`.`id` AS `id`,`news`.`shortheadline` AS `shortheadline`,`news`.`photo` AS `photo` FROM `news`
+				WHERE `news`.`article` LIKE '%$example%'")->num_rows();
+				if(($numrows+$numrows2) <= $count)
+					{
+						$exe = false;
+					}else{
+				
+						$numrows = $numrows%20;
+						$count = 20 - $numrows;
+						$count2 = $count + 20;
+					}
+			}else{
+				$count = 0;
+				$count2 = 20-$numrows;
+			};
+
+
+		$sql2="SELECT  distinct `news`.`id` AS `id`,`news`.`shortheadline` AS `shortheadline`,`news`.`photo` AS `photo` FROM `news`
+				WHERE `news`.`article` LIKE '%$example%' order by `news`.`timestamp` limit $count, $count2";
+		
+		$query1=$this->db->query($sql1)->result();
+
+		if($exe)
+		{
+			$query2=$this->db->query($sql2)->result();
+			foreach ($query2 as $row) {
+				array_push($query1,$row);
+			};
+			
+		}
+		return $query1;
+
+	}
 
 
  } 
